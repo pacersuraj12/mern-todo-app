@@ -1,0 +1,75 @@
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.todo-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.todo-title {
+    font-size: 17px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.todo-right {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn,
+.save-btn,
+.cancel-btn,
+.delete-btn {
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.edit-btn {
+    background: #007bff;
+}
+
+.save-btn {
+    background: #28a745;
+}
+
+.cancel-btn {
+    background: #6c757d;
+}
+
+.delete-btn {
+    background: #dc3545;
+}
+
+.edit-btn:hover {
+    background: #0056b3;
+}
+
+.save-btn:hover {
+    background: #1f8b39;
+}
+
+.cancel-btn:hover {
+    background: #5a6268;
+}
+
+.delete-btn:hover {
+    background: #b02a37;
+}
