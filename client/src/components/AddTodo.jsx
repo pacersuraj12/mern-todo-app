@@ -12,7 +12,7 @@ function AddTodo({ fetchTodos }) {
         }
 
         try {
-            await axios.post("http://localhost:3200/api/todos", {
+            await axios.post("https://mern-todo-backend-udv5.onrender.com", {
                 title,
             });
 

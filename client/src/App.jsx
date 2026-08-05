@@ -13,7 +13,7 @@ function App() {
     // Get all todos
     const fetchTodos = async () => {
         try {
-            const response = await axios.get("http://localhost:3200/api/todos");
+            const response = await axios.get("https://mern-todo-backend-udv5.onrender.com");
             setTodos(response.data);
             console.log(response.data);
         } catch (error) {
@@ -40,7 +40,7 @@ function App() {
     // Delete todo
     const deleteTodo = async (id) => {
         try {
-            await axios.delete(`http://localhost:3200/api/todos/${id}`);
+            await axios.delete(`https://mern-todo-backend-udv5.onrender.com/${id}`);
             fetchTodos();
         } catch (error) {
             console.log(error);
@@ -49,7 +49,7 @@ function App() {
 
     const toggleComplete = async (todo) => {
         try {
-            await axios.put(`http://localhost:3200/api/todos/${todo._id}`, {
+            await axios.put(`https://mern-todo-backend-udv5.onrender.com/${todo._id}`, {
                 title: todo.title,
                 completed: !todo.completed,
             });
@@ -62,7 +62,7 @@ function App() {
 
     const updateTodo = async (id, title, completed) => {
         try {
-            await axios.put(`http://localhost:3200/api/todos/${id}`, {
+            await axios.put(`https://mern-todo-backend-udv5.onrender.com/${id}`, {
                 title,
                 completed,
             });
