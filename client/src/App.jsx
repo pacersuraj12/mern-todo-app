@@ -9,13 +9,14 @@ function App() {
     const [search, setSearch] = useState("");
     const [filter, setFilter] = useState("all");
 
-
     // Get all todos
     const fetchTodos = async () => {
         try {
-            const response = await axios.get("https://mern-todo-backend-udv5.onrender.com");
+            const response = await axios.get(
+                "https://mern-todo-backend-udv5.onrender.com/api/todos"
+            );
+
             setTodos(response.data);
-            console.log(response.data);
         } catch (error) {
             console.log(error);
         }
@@ -40,19 +41,26 @@ function App() {
     // Delete todo
     const deleteTodo = async (id) => {
         try {
-            await axios.delete(`https://mern-todo-backend-udv5.onrender.com/${id}`);
+            await axios.delete(
+                `https://mern-todo-backend-udv5.onrender.com/api/todos/${id}`
+            );
+
             fetchTodos();
         } catch (error) {
             console.log(error);
         }
     };
 
+    // Toggle Complete
     const toggleComplete = async (todo) => {
         try {
-            await axios.put(`https://mern-todo-backend-udv5.onrender.com/${todo._id}`, {
-                title: todo.title,
-                completed: !todo.completed,
-            });
+            await axios.put(
+                `https://mern-todo-backend-udv5.onrender.com/api/todos/${todo._id}`,
+                {
+                    title: todo.title,
+                    completed: !todo.completed,
+                }
+            );
 
             fetchTodos();
         } catch (error) {
@@ -60,12 +68,16 @@ function App() {
         }
     };
 
+    // Update Todo
     const updateTodo = async (id, title, completed) => {
         try {
-            await axios.put(`https://mern-todo-backend-udv5.onrender.com/${id}`, {
-                title,
-                completed,
-            });
+            await axios.put(
+                `https://mern-todo-backend-udv5.onrender.com/api/todos/${id}`,
+                {
+                    title,
+                    completed,
+                }
+            );
 
             fetchTodos();
         } catch (error) {
@@ -80,6 +92,7 @@ function App() {
     return (
         <div className="app">
             <h1>Todo App</h1>
+
             <input
                 className="search"
                 type="text"
@@ -89,18 +102,15 @@ function App() {
             />
 
             <div className="filter-buttons">
-                <button onClick={() => setFilter("all")}>
-                    All
-                </button>
-
+                <button onClick={() => setFilter("all")}>All</button>
                 <button onClick={() => setFilter("completed")}>
                     Completed
                 </button>
-
                 <button onClick={() => setFilter("pending")}>
                     Pending
                 </button>
             </div>
+
             <AddTodo fetchTodos={fetchTodos} />
 
             <TodoList

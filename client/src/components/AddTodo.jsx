@@ -12,15 +12,15 @@ function AddTodo({ fetchTodos }) {
         }
 
         try {
-            await axios.post("https://mern-todo-backend-udv5.onrender.com", {
-                title,
-            });
+            await axios.post(
+                "https://mern-todo-backend-udv5.onrender.com/api/todos",
+                {
+                    title,
+                }
+            );
 
             setTitle("");
-
-            // Refresh todo list
             fetchTodos();
-
         } catch (error) {
             console.log(error);
         }
